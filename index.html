@@ -1,1 +1,27 @@
-Hello World
+Source text:<br>
+<textarea type="text" id="input" rows="20" cols="60"></textarea><br><br>
+Unique symbols:<br>
+<textarea type="text" id="result" rows="5" cols="60"></textarea>
+<script>
+    var input = document.getElementById('input');
+    input.oninput = function() {
+        var source = input.value;
+        var dict = {};
+        for (var i = 0; i < source.length; i++)
+        {
+            var ch = source.charAt(i);
+            if (dict[ch] !== undefined)
+                dict[ch] = dict[ch] + 1;
+            else
+                dict[ch] = 0;
+        }
+        var output = "";
+        var sorted = [];
+        for(var key in dict) {
+            sorted[sorted.length] = key;
+        }
+        sorted.sort();
+        output = sorted.join("");
+        document.getElementById('result').value = output;
+    };
+</script>
